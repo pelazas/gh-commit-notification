@@ -55,6 +55,7 @@ def send_email(commits, repository_name, pusher_name):
 
 @app.route('/webhook', methods=['POST'])
 def handle_webhook():
+    print("Received a webhook event.")
     # 1. Verify Signature
     signature = request.headers.get('X-Hub-Signature-256')
     if not verify_signature(request.data, GITHUB_SECRET, signature):

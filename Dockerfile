@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 
 # Expose the port (Flask default 5000)
-EXPOSE 5000
+EXPOSE 8003
 
 # Run with Gunicorn for production stability
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8003", "app:app"]
