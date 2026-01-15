@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  github-notifier:
+    build: .
+    container_name: github_notifier
+    restart: always
+    ports:
+      - "8003:8003"  # Maps port 8003 on VPS to port 8003 in container
+    env_file:
+      - .env         # Tells Docker to read variables from your .env file
