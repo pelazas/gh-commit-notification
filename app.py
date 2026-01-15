@@ -9,12 +9,13 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # --- Configuration from Environment Variables ---
-EMAIL_HOST = 'mail.privateemail.com'
-EMAIL_PORT = 587
-EMAIL_USER = 'noreply@btcpricetomorrow.com'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_USER = os.environ.get('EMAIL_USER')
 EMAIL_PASS = os.environ.get('EMAIL_PASSWORD')
-GITHUB_SECRET = os.environ.get('GITHUB_SECRET')  # We will set this in GitHub and Docker later
-TARGET_EMAIL = os.environ.get('TARGET_EMAIL')    # Where you want to receive the notifications
+GITHUB_SECRET = os.environ.get('GITHUB_SECRET')
+TARGET_EMAIL = os.environ.get('TARGET_EMAIL') 
 
 def verify_signature(payload_body, secret_token, signature_header):
     """Verify that the payload was sent from GitHub by validating SHA256."""
